@@ -1,0 +1,23 @@
+{% extends 'agenda/base.html' %}
+
+{% block content %}
+<div class="container mt-3">
+    <a href="{% url 'agenda' %}" class="btn btn-outline-light">&lt; Back</a>
+</div>
+<div class="container mt-3 d-flex justify-content-center">
+    <div class="col-6">
+        <div class="container bg-light rounded py-3">
+            <h1 class="display-5"><b>Create</b></h1>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" class="btn btn-primary" name="editBtn">
+                <!-- <input type="submit" class="btn btn-danger" name="deleteBtn"> -->
+                <button class="btn btn-danger" type="submit" name="deleteBtn">Delete</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

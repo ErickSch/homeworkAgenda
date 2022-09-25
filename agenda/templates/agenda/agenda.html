@@ -1,0 +1,45 @@
+{% extends 'agenda/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    
+    <div class="container my-2">
+        <a href="{% url 'create_subject' %}" class="btn btn-outline-info my-2">+ Add subject</a>
+        <div class="row">
+            <div class="col-4">
+                <div class="container bg-light rounded py-3">
+                    <p>{{date}}</p>
+                    <h1 class="display-5"><b>Create</b></h1>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <input type="submit" class="btn btn-primary">
+                    </form>
+                </div>
+            </div>
+    
+            
+            {% for homework in homeworks %}
+            <div class="col-4 mt-3">
+                <div class="container bg-light rounded py-3">
+                    <h1 class="display-5"><b>{{homework.title}}</b></h1>
+                    <p><b>Subject:</b> {{homework.subject}}</p>
+                    <p><b>Professor:</b> {{homework.subject.teacher}}</p>
+                    <p><b>Description:</b> {{homework.description}}</p>
+                    <p><b>Date:</b> 22/09/22</p>
+                    <a href="{% url 'edit_homework' homework.id %}" class="btn btn-warning">Edit</a>
+                    
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+            
+        </div>
+
+    </div>
+
+
+{% endblock content %}
+
